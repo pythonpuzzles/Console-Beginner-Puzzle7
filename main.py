@@ -57,16 +57,21 @@ def puzzle_a():
     print('\nPuzzle A')
     print('~~~~~~~~~')
 
-    challenge = None
+    challenge = "You shall not pass!"
 
-    print("Gandalf: 'You shall not pass!'...")
-    user_input = input("Try and pass? y/n:")
+    try:
+        print(f"Gandalf: '{challenge}'...")
+        user_input = input("Try and pass? y/n:")
 
-    if user_input.lower() == "y":
-        uppercase_input = challenge.upper()
-        print(f"{uppercase_input}")
-    else:
-        print("Gandalf: 'Phew, I thought you were going to try and pass! Slow down!'...")
+        if user_input.lower() == "y":
+            uppercase_input = challenge.upper()
+            print(f"{uppercase_input}")
+        else:
+            print("Gandalf: 'Phew, I thought you were going to try and pass! Slow down!'...")
+    except AttributeError as e:
+        print(f"Attribute Error: {e}")
+    except Exception as e:
+        print(f"General Error: {e}")
 
 
 # Puzzle B - Format me not
@@ -75,11 +80,16 @@ def puzzle_b():
     print('\nPuzzle B')
     print('~~~~~~~~~')
 
-    user_input = 0.0
+    try:
+        user_input = 0.0
 
-    user_input = int(input("Enter a number with a floating point:"))
+        user_input = float(input("Enter a number with a floating point:"))
 
-    print("Your number was {1}".format(user_input))
+        print("Your number was {0}".format(user_input))
+    except IndexError as e:
+        print(f"Index Error: {e}")
+    except Exception as e:
+        print(f"General Error: {e}")
 
 
 # Puzzle C - Not my type
@@ -88,13 +98,18 @@ def puzzle_c():
     print('\nPuzzle C')
     print('~~~~~~~~~')
 
-    bank = 100
+    try:
+        bank = 100
 
-    user_input = input("How much money would you link to add to your bank account?:")
+        user_input = int(input("How much money would you link to add to your bank account?:"))
 
-    bank = bank + user_input
+        bank = bank + user_input
 
-    print(f"Your new bank balance is {bank}")
+        print(f"Your new bank balance is {bank}")
+    except TypeError as e:
+        print(f"ValueError: {e}")
+    except Exception as e:
+        print(f"General Error: {e}")
 
 
 if __name__ == '__main__':
